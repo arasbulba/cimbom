@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} Yeni Post - Bulba Blog {% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<h1> Postu silmək üçün səhifə</h1>
+<br/>
+<h3> {{ post.title }} yazısını sil </h3>
+<div class="mb-3">
+<form method="POST">
+    {% csrf_token %}
+<br/>
+   <strong>Postu silmək istədiyinizdən əminsiniz?</strong>
+   <br/>
+   <br/>
+    <button>Əminəm</button>
+</div>
+
+{% else %}
+
+<b> You're not allowed to delete post, because you're not signed in</b>
+
+{% endif %}
+{% endblock %}

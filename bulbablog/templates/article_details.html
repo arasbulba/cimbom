@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} {{ post.title }} - Bulba Blog {% endblock %}
+
+{% block content %}
+
+<h1>{{ post.title }}</h1>
+<small>By: {{ post.author }}</small> - <small> <i> {{ post.post_date }} </i></small>
+
+{% if user.is_authenticated %}
+
+<small><i><a href="{% url 'update_post' post.pk %}">Edit</a></i></small> - 
+<small><i><a href="{% url 'delete_post' post.pk %}">Remove</a></i></small>
+
+<ul>
+</ul>
+{% endif %}
+
+</br>
+</br>
+{{ post.body|safe }}
+
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-info">Geri</a>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Timeline</h1>
+
+<ul>
+{% for post in object_list %}
+<li><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> - 
+    <i>author:</i>{{ post.author }} - 
+    <small> <i> {{ post.post_date }} </i></small> - 
+    {% if user.is_authenticated %}
+    <small><i><a href="{% url 'update_post' post.pk %}">Edit</a></i></small>
+    <small><i><a href="{% url 'delete_post' post.pk %}">Remove</a></i></small>
+    {% endif %}
+<ul></ul>
+<ul></ul>
+{{ post.body|slice:":250"|safe }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

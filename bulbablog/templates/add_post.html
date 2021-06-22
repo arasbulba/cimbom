@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Yeni Post - Bulba Blog {% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<h1> Yeni blog əlavə et</h1>
+<br/>
+<div class="mb-3">
+<form method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <button>Post</button>
+</div>
+
+{% else %}
+
+<b>You need to sign in order to post a blog</b>
+
+{% endif %}
+
+
+{% endblock %}
